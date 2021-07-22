@@ -22,3 +22,8 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+---
+
+### Instalaciones
+- `vue add @ianaya89/tailwind`: adicionando tailwind
