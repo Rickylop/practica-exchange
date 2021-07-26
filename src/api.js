@@ -1,10 +1,27 @@
-const url = 'https://api.coincap.io/v2';
+const url = 'https://api.coincap.io/v2/assets';
 
 function getAssets() {
-    return fetch('https://api.coincap.io/v2/assets?limit=10')
+    return fetch(`${url}?limit=10`)
         .then(res => res.json())
         .then(res => res.data)
 }
 
-export default { getAssets }
+function getAsset(coin) {
+    return fetch(`${url}/${coin}`)
+        .then(res => res.json())
+        .then(res => res.data)
+}
+
+function getAssetHistory(coin) {
+    const now = new Date()
+    const end = now.getTime()
+    now.setTime(now.getTime() - 1)
+    const start = now.getTime()
+    console.log('ruta: ', `${url}/${coin}/history?interval=h1&start=${start}&end=${end}`);
+    return fetch(`${url}/${coin}/history?interval=d1&start=1624752000000&end=1627171200000`)
+        .then(res => res.json())
+        .then(res => res.data)
+}
+
+export default { getAssets, getAsset, getAssetHistory }
 
