@@ -15,10 +15,13 @@ function getAsset(coin) {
 function getAssetHistory(coin) {
     const now = new Date()
     const end = now.getTime()
-    now.setTime(now.getTime() - 1)
+    now.setDate(now.getDate() - 2)
     const start = now.getTime()
-    console.log('ruta: ', `${url}/${coin}/history?interval=h1&start=${start}&end=${end}`);
-    return fetch(`${url}/assets/${coin}/history?interval=d1&start=1624752000000&end=1627171200000`)
+    // console.log('ruta: ', `${url}/${coin}/history?interval=h1&start=${start}&end=${end}`);
+    // return fetch(`${url}/assets/${coin}/history?interval=d1&start=1624752000000&end=1627171200000`)
+    return fetch(
+        `${url}/assets/${coin}/history?interval=h1&start=${start}&end=${end}`
+    )
         .then(res => res.json())
         .then(res => res.data)
 }
